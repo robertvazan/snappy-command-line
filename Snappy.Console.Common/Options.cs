@@ -80,9 +80,9 @@ namespace Snappy.Console.Common
                             errorOut.WriteLine("Cannot find file '{0}'", file);
                         return null;
                     }
-                    if (options.Mode == CompressionMode.Decompress && !options.Test && !options.Stdout && !file.EndsWith(".snz"))
+                    if (options.Mode == CompressionMode.Decompress && !options.Test && !options.Stdout && !file.EndsWith(".sz"))
                     {
-                        errorOut.WriteLine("Compressed file must have suffix '.snz': {0}", file);
+                        errorOut.WriteLine("Compressed file must have suffix '.sz': {0}", file);
                         return null;
                     }
                 }

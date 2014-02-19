@@ -53,20 +53,20 @@ namespace Snappy.Console.Common
             }
             else if (!options.Test)
             {
-                using (var decompressor = new SnappyStream(output, CompressionMode.Decompress, true))
+                using (var decompressor = new SnappyStream(input, CompressionMode.Decompress, true))
                 {
                     while (true)
                     {
-                        int read = input.Read(buffer, 0, buffer.Length);
+                        int read = decompressor.Read(buffer, 0, buffer.Length);
                         if (read == 0)
                             break;
-                        decompressor.Write(buffer, 0, read);
+                        output.Write(buffer, 0, read);
                     }
                 }
             }
             else
             {
-                using (var decompressor = new SnappyStream(output, CompressionMode.Decompress, true))
+                using (var decompressor = new SnappyStream(input, CompressionMode.Decompress, true))
                 {
                     while (true)
                     {
@@ -81,7 +81,7 @@ namespace Snappy.Console.Common
         static string GetAltFileName(string filename, Options options)
         {
             if (options.Mode == CompressionMode.Compress)
-                return filename + ".snz";
+                return filename + ".sz";
             return Path.Combine(Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename));
         }
     }
