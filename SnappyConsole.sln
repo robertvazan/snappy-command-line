@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappy.Console.Compress", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappy.Console.Decompress", "Snappy.Console.Decompress\Snappy.Console.Decompress.csproj", "{0165F437-4B1E-41C8-820A-51B3F69F1C9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snappy.Console.Common", "Snappy.Console.Common\Snappy.Console.Common.csproj", "{44A404AA-0F86-49F5-AD80-A5851BC7A260}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0165F437-4B1E-41C8-820A-51B3F69F1C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0165F437-4B1E-41C8-820A-51B3F69F1C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0165F437-4B1E-41C8-820A-51B3F69F1C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44A404AA-0F86-49F5-AD80-A5851BC7A260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44A404AA-0F86-49F5-AD80-A5851BC7A260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44A404AA-0F86-49F5-AD80-A5851BC7A260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44A404AA-0F86-49F5-AD80-A5851BC7A260}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

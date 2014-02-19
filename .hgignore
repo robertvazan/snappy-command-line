@@ -2,3 +2,5 @@ syntax: glob
 bin
 obj
 *.suo
+syntax: regexp
+packages/.*[0-9].*
