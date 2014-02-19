@@ -44,6 +44,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Snappy.Console.Common\Snappy.Console.Common.csproj">
+      <Project>{44a404aa-0f86-49f5-ad80-a5851bc7a260}</Project>
+      <Name>Snappy.Console.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

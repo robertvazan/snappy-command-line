@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Compression;
+using System.Reflection;
 using System.Text;
 
 namespace Snappy.Console.Common
@@ -9,31 +11,78 @@ namespace Snappy.Console.Common
     {
         public static void Run(string[] args, CompressionMode mode)
         {
-            bool stdout = false;
-            bool test = false;
-            foreach (var arg in args)
+            var options = Options.Parse(args, mode);
+            if (options == null)
+                return;
+            var errorOut = System.Console.Error;
+            Stream stdout = options.Stdout || options.Files.Count == 0 ? System.Console.OpenStandardOutput() : null;
+            foreach (var file in options.Files)
             {
-                switch (arg)
+                using (var input = File.Open(file, FileMode.Open, FileAccess.Read))
                 {
-                    case "-d":
-                    case "--decompress":
-                    case "--uncompress":
-                        mode = CompressionMode.Decompress;
-                        break;
-                    case "-c":
-                    case "--stdout":
-                    case "--to-stdout":
-                        stdout = true;
-                        break;
-                    case "-t":
-                    case "--test":
-                        test = true;
-                        break;
-                    case "-V":
-                    case "--version":
-                        break;
+                    var output = options.Test ? null : stdout ?? File.Open(GetAltFileName(file, options), FileMode.Create, FileAccess.Write);
+                    ProcessFile(input, output, options);
+                    if (output != null && output != stdout)
+                        output.Close();
                 }
             }
+            if (options.Files.Count == 0)
+            {
+                Stream stdin = System.Console.OpenStandardInput();
+                ProcessFile(stdin, stdout, options);
+            }
+            if (stdout != null)
+                stdout.Close();
+        }
+
+        static void ProcessFile(Stream input, Stream output, Options options)
+        {
+            var buffer = new byte[8192];
+            if (options.Mode == CompressionMode.Compress)
+            {
+                using (var compressor = new SnappyStream(output, CompressionMode.Compress, true))
+                {
+                    while (true)
+                    {
+                        int read = input.Read(buffer, 0, buffer.Length);
+                        if (read == 0)
+                            break;
+                        compressor.Write(buffer, 0, read);
+                    }
+                }
+            }
+            else if (!options.Test)
+            {
+                using (var decompressor = new SnappyStream(output, CompressionMode.Decompress, true))
+                {
+                    while (true)
+                    {
+                        int read = input.Read(buffer, 0, buffer.Length);
+                        if (read == 0)
+                            break;
+                        decompressor.Write(buffer, 0, read);
+                    }
+                }
+            }
+            else
+            {
+                using (var decompressor = new SnappyStream(output, CompressionMode.Decompress, true))
+                {
+                    while (true)
+                    {
+                        int read = input.Read(buffer, 0, buffer.Length);
+                        if (read == 0)
+                            break;
+                    }
+                }
+            }
+        }
+
+        static string GetAltFileName(string filename, Options options)
+        {
+            if (options.Mode == CompressionMode.Compress)
+                return filename + ".snz";
+            return Path.Combine(Path.GetDirectoryName(filename), Path.GetFileNameWithoutExtension(filename));
         }
     }
 }
