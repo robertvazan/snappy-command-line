@@ -49,7 +49,7 @@ namespace Snappy.Console.Common
                         return null;
                     case "-h":
                     case "--help":
-                        errorOut.WriteLine("snzip, znunzip - Snappy compression command-line tool");
+                        errorOut.WriteLine("snzip, snunzip - Snappy compression command-line tool");
                         errorOut.WriteLine("Options:");
                         errorOut.WriteLine(" -d --decompress --uncompress");
                         errorOut.WriteLine("   Run in decompression mode. This is default if started as 'snunzip'.");
