@@ -1,4 +1,5 @@
-﻿using Snappy.Console.Common;
+// Part of Snappy for Windows: https://snappy.machinezoo.com/
+﻿﻿using Snappy.Console.Common;
 using System;
 using System.Collections.Generic;
 using System.IO.Compression;
