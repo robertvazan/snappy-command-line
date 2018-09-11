@@ -1,7 +1,6 @@
 # Snappy for Windows command line #
 
-This is source code for snzip and snunzip - command-line compression tools
-utilizing [Snappy compression algorithm](https://google.github.io/snappy/).
+This is source code for snzip and snunzip - command-line compression tools using [Snappy compression algorithm](https://google.github.io/snappy/).
 
 * [Website](https://snappy.machinezoo.com/)
 * [Tutorial for command-line tools](https://snappy.machinezoo.com/#shell)
