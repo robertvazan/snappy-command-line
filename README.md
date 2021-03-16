@@ -6,7 +6,7 @@ This is source code for snzip and snunzip - command-line compression tools using
 * Download: see [Tutorial for command-line tools](https://snappy.machinezoo.com/#shell)
 * Sources: [GitHub](https://github.com/robertvazan/snappy-command-line), [Bitbucket](https://bitbucket.org/robertvazan/snappy-command-line)
 * Issues: [GitHub](https://github.com/robertvazan/snappy-command-line/issues), [Bitbucket](https://bitbucket.org/robertvazan/snappy-command-line/issues)
-* License: [BSD license](https://opensource.org/licenses/BSD-3-Clause)
+* License: [BSD license](LICENSE)
 * See also [upstream Snappy](https://google.github.io/snappy/)
 
 ***
